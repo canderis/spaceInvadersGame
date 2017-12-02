@@ -28,7 +28,7 @@ bool ai(int posX, int posY){
         posY++;
     }
     if (rand() % 100 + 1 == 1){
-        board[posX][posY + 1] = '*';
+        board[posX][posY + 1] = '_';
         aiDone[posX][posY + 1] = true;
 
     }
@@ -116,11 +116,11 @@ int main(int argc, char *argv[]){
                                 board[i][j-1] = '.';
                         }
                     }
-                    else if(board[i][j] == '*' && !aiDone[i][j] ){
+                    else if(board[i][j] == '_' && !aiDone[i][j] ){
                         aiDone[i][j+1] = true;
                         if(j + 1 <= 20){
                             if(board[i][j+1] != 'V')
-                                board[i][j+1] = '*';
+                                board[i][j+1] = '_';
                         }
                     }
                     else if(board[i][j] == '#'){
