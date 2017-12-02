@@ -52,6 +52,8 @@ int main(int argc, char *argv[]){
     initscr();
     curs_set(0);
     bool playAgain;
+    int wins = 0;
+    int losses = 0;
     do{
         timeout(1);
         playAgain = false;
@@ -158,12 +160,16 @@ int main(int argc, char *argv[]){
         mvaddstr(10,35, "Game Over");
         if(enemiesRemaining){
             mvaddstr(12,35, "You lost.");
+            losses++;
         }
         else{
             mvaddstr(12,35, "You won!!");
-
-
+            wins++;
         }
+
+        mvaddstr(16,29, ("Wins: " + std::to_string(wins) + " Losses: " + std::to_string(losses)).c_str());
+
+
         mvaddstr(14,29, "Press y to play again.");
         do{
             if(!(getch() == 'A' || getch() == 'C' || getch() == 'D')){
